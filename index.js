@@ -279,14 +279,16 @@ async function fastifyHttpProxy (fastify, opts) {
     constraints: opts.constraints || {},
     handler
   })
-  fastify.route({
-    url: '/*',
-    method: opts.httpMethods || httpMethods,
-    preHandler,
-    config: opts.config || {},
-    constraints: opts.constraints || {},
-    handler
-  })
+  if(!opts.useExactPrefix){
+    fastify.route({
+      url: '/*',
+      method: opts.httpMethods || httpMethods,
+      preHandler,
+      config: opts.config || {},
+      constraints: opts.constraints || {},
+      handler
+    })
+  }
 
   let wsProxy
 

@@ -40,6 +40,7 @@ declare namespace fastifyHttpProxy {
   export interface FastifyHttpProxyOptions extends FastifyReplyFromOptions {
     upstream: string;
     prefix?: string;
+    useExactPrefix?: boolean;
     rewritePrefix?: string;
     proxyPayloads?: boolean;
     preHandler?: preHandlerHookHandler;
